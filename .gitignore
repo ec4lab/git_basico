@@ -1,3 +1,37 @@
+# Entorno virtual,
+.venv/
+
+# Archivos temporales de Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de VSCode
+.vscode/
+
+# Archivos por extensión
+#*.xlsx # Todos los .xlsx
+#*.csv  # Todos los .csv
+#*.jpg  # Todos los .jpg
+
+# Archivos específicos
+archivo.txt
+secrets.yaml
+
+# Carpetas completas
+#Carpeta_1/ # Carpeta 1 y todo su contendido
+
+# Carpetas ocultas completas
+.privado/       
+#Carpeta privado y todo su contendido
+
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
