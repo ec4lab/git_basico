@@ -109,7 +109,7 @@ Antes de empezar a crear/editar archivos del proyecto se debe establecer la estr
 + .gitignore
 + LICENCE
 
-### .gitignore
+## .gitignore
 Si no fue creado en el repositorio web, es posible agregarlo manualmente, puedes crearlo desde el mismo terminal.
 ```bash
 touch .gitignore # en Ubuntu
@@ -157,12 +157,12 @@ secrets.yaml
 
 ```
 
-### Licencia
+## Licencia
 Al igual que `.gitignore`,Si no fue creado con el repositorio web, es posible agregarlo, un archivo te texto plano sin extensión con el nombre: `LICENCE`, [aquí](https://docs.github.com/es/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) una lista de las posibles licencias que se pueden elegir.
 
 No hay obligación de elegir una, sin embargo, sin una licencia, se aplican las leyes de derecho de autor predeterminadas, lo que implica que se conservan todos los derechos del código fuente, y nadie puede reproducir, distribuir o crear trabajos a partir de este trabajo. Si, en cambio, se está creando un proyecto de código abierto, se alienta fuertemente a que se incluya una licencia de código abierto.
 
-### Código y archivos
+## Código y archivos
 Hasta aquí se a creado el esquema básico, y se podría considerar que son genéricos a la mayoría de los proyectos, es hora de trabajar en los archivos particulares, en este caso se va a realizar un ejemplo sencillo en python.
 
 Desde el terminal o el explorador, se crea el archivo `main.py`, es posible colocar cualquier nombre, pero es una buena práctica nombrar el archivo principal como main.
@@ -183,7 +183,7 @@ print(f'a + b es igual a: {a+b}')
 print(f'Versión de request: {requests.__version__}')
 print(f'Todo OK en la versión 0.1.0')
 ```
-### Entornos virtuales
+## Entornos virtuales
 Al momento de programar es conveniente hacerlo dentro de entornos virtuales, un entorno virtual es una carpeta que contiene una instalación aislada de Python y sus paquetes y evita así, conflictos entre dependencias de distintos proyectos. Podría tomar cualquier nombre pero es una buen práctica llamarlo `.venv`
 
 Se puede crear directamente desde el terminal, hay que asegurase de estar dentro de la carpeta del proyecto:
@@ -220,7 +220,7 @@ Cuando esté activado el entorno virtual, la ventana del terminal lo indicará p
 
 ![venv](imagenes/venv_terminal.png)   
 
-### Seleccionar interprete
+## Seleccionar interprete
 Al crear un entorno virtual, se ha creado una versión aislada de python en donde es posible instalar librerías y paquetes de manera local sin afectar la instalación global. Para asegurar de estar utilizando esta versión aislada, se debe corroborar que VSCode efectivamente esté utilizando esta versión.
 
 Con `main.py` abierto presionar `ctrl`+`shift`+`p`, en la barra de búsqueda escribir `seleccionar intérprete`se abrirá una pestaña en la parte superior de la ventana donde se podrá comprobar el intérprete seleccionado actualmente:
@@ -244,7 +244,7 @@ En **windows** por por general las rutas son:
 \NOMBRE_DEL_PROYECTO\.venv\Scripts\python.exe # Para el intérprete del venv
 ```
 
-### Instalar librerías
+## Instalar librerías
 Con el entorno virtual creado y activado y el intérprete correcto seleccionado ya se puede ejecutar el código, como el intérprete es un "clon" de la versión de python instalada, este ya contiene las librerías de la biblioteca estándar como por ejemplo `os` `sys` `datetime` `math` `Tkinter`, etc. Pero es muy probable que el código requiera la instalación de otras librerías.
 
 En ese ejemplo, se necesita `requests, entonces simplemente se instala:
@@ -267,7 +267,7 @@ Para instalar todas las librerías detalladas en `requirements.txt` (repo clonad
 ```bash
 pip install -r requirements.txt
 ```
-#### Otros comandos relacionados con librerías
+### Otros comandos relacionados con librerías
 
 ```bash
 pip show requests # Verificar la versión de un paquete instalado
@@ -342,6 +342,56 @@ git push
 Este comando enviará todos los archivos del `commit` al servidor actualizando la información en el, al mismo tiempo que genera una etiqueta para luego poder ver el historial de versiones.
 
 Si es la primera vez que ejecutas este comando, se solicitará ingresar usuario y contraseña de GitHub.
+
+![git_push](imagenes/git_push.png)  
+
+en este punto el repositorio web está actualizado según el último commit
+
+![git_push_web](imagenes/git_push_web.png)
+
+## 7- Flujo de trabajo
+
+De ahora en adelante el flujo de trabajo (siempre que no se deba volver a versiones anteriores) es similar a lo ya realizado:
+
+- [modificar](#3--archivos-locales) archivos
+- git [add](#4--añadir-archivos-al-stage-tracking) .
+- git [commit](#5--git-commit) - m "Modificaciones"
+- git [push](#6--git-push)
+
+## 8- Clonar el proyecto en otra PC o usuario
+Los primeros pasos son similares a los ya vistos:
+
+- [Clonar](#2--clonar-el-repositorio-en-vscode) el proyecto(solo primera vez)
+- [Navegar](#2--clonar-el-repositorio-en-vscode) a la carpeta del proyecto
+- [Crear](#entornos-virtuales) entorno virtual
+- [Activar](#entornos-virtuales) el entorno virtual
+- [Seleccionar](#seleccionar-interprete) interprete
+- [instalar](#instalar-librerías) librerías
+
+Verificar si la copia local está actualizada
+```bash
+git fetch
+```
+Este comando trae los cambios en el servidor remoto pero no reemplaza archivos locales, de esta manera se puede verificar si los datos locales están actualizados o no.
+
+Verificar actualizaciones
+```bash
+git status
+```
+Posibles salidas:
+```
+Your branch is up to date with 'origin/main'. → Repositorio Remoto y local sincronizados
+Your branch is behind 'origin/main' by X commits. → Faltan cambios
+```
+para actualizar la copia local:
+```bash
+git pull
+```
+Luego se continúa con el flujo de trabajo normal
+- [modificar](#3--archivos-locales) archivos
+- git [add](#4--añadir-archivos-al-stage-tracking) .
+- git [commit](#5--git-commit) - m "Modificaciones"
+- git [push](#6--git-push)
 
 # Licencia
 Este proyecto está licenciado bajo la Licencia MIT.
